@@ -28,13 +28,14 @@ const Home = () => {
     scrollRef.current.scrollTo(0, 0)
   },[])
 
-  console.log(userInfo)
+  // console.log(userInfo)
   return(
     <div className="flex bg-gray-50 md:flex-row flex-col h-screen transaction-height duration-75 ease-out ">
       <div className="hidden md:flex h-screen flex-initial">
         <Sidebar user={user && user} />
       </div>
       <div className="flex md:hidden flex-row">
+        <div className="p-2 w-full flex flex-row justify-between items-center shadow-md">
         <HiMenu fontSize={40} className="cursor-pointer" onClick={()=> setToggleSidebar(true)}/>
         <Link>
           <img src={logo} alt="logo" width={160} className="w-28"/>
@@ -42,7 +43,6 @@ const Home = () => {
         <Link to={`user-profile/${user?._id}`}>
           <img src={user?.image} alt="logo" width={80} className="w-28"/>
         </Link>
-      </div>
       {toggleSidebar && (
       <div class="fixed w-4/5 bg-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in">
         <div className="absolute w-full flex  justify-end items-center p-2">
@@ -51,6 +51,11 @@ const Home = () => {
         <Sidebar user={user && user} closeToggle={setToggleSidebar} />
       </div>
       )}
+
+        </div>
+      </div>
+      <div className="flex md:hidden flex-row">
+      </div>
       <div className="pb-2 flex-1 h-screen overflow-y-scroll" ref={scrollRef}>
         <Routes>
           <Route path= "/user-profile/:userId" element={<UserProfile />} />
