@@ -6,6 +6,6 @@ export { default as Sidebar } from '../components/sidebar/index';
 export { default as UserProfile } from '../components/userProfile/index';
 export { default as Search } from '../components/search/index';
 export { default as PinDetail } from '../components/pinDetail/index';
-// export { default as Sidebar } from './search'
-// export { default as Sidebar } from './search'
-// export { default as Sidebar } from './search'
+export { default as Spinner } from '../components/spinner';
+export { default as Pin } from '../components/pin';
+export { default as MasonryLayout } from '../components/masonryLayout'
