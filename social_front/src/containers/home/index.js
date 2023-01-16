@@ -8,12 +8,13 @@ import {  Sidebar, UserProfile }  from '../../components'
 import Pins from "../pins";
 import { client } from '../../client'
 import logo from '../../assets/logo.png'
+import { fetchUser } from "../../utils/fetchUser";
 
 
 const Home = () => {
   const [toggleSidebar, setToggleSidebar] = useState(false);
   const [ user, setUser ] = useState(null)
-  const userInfo = localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : localStorage.clear();
+  const userInfo = fetchUser();
   const scrollRef = useRef(null);
 
   useEffect(()=>{
@@ -23,7 +24,7 @@ const Home = () => {
       .then((data)=>{
         setUser(data[0])
       })
-  },[])
+  },[userInfo?.googleId])
   useEffect(()=>{
     scrollRef.current.scrollTo(0, 0)
   },[])
