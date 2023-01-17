@@ -16,6 +16,7 @@ const Feed = () => {
 
     if(categoryId){
       const query = searchQuery(categoryId)
+
       client.fetch(query)
         .then((data)=> {
           setPins(data)

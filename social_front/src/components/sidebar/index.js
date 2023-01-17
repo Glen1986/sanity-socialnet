@@ -5,7 +5,7 @@ import { IoIosArrowForward } from 'react-icons/io';
 
 import logo from '../../assets/logo.png'
 
-const categories = [
+ const categories = [
   {name: 'animals'},
   {name: 'persons'},
   {name: 'objects'},

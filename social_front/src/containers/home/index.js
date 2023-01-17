@@ -48,7 +48,7 @@ const Home = () => {
         </Link>
         </div>
         {toggleSidebar && (
-      <div class="fixed w-4/5 bg-white shadow-md h-screen overflow-y-auto z-10 animate-slide-in">
+      <div class="fixed w-2/5 bg-white shadow-md h-screen overflow-y-auto z-10 animate-slide-in">
         <div className="absolute w-full flex justify-end items-center p-2">
           <AiFillCloseCircle fontSize={25} className="cursor-pointer z-1" onClick={()=> setToggleSidebar(false)} />
         </div>
@@ -59,11 +59,11 @@ const Home = () => {
       <div className="pb-2 flex-1 h-screen overflow-y-scroll" ref={scrollRef}>
         <Routes>
           <Route path= "/user-profile/:userId" element={<UserProfile />} />
-          <Route path= "/" element={<Pins user={user && user} />} />          
+          <Route path= "/*" element={<Pins user={user && user} />} />          
         </Routes>
       </div>
     </div>
     )
 }
-
+//
 export default Home
