@@ -2,17 +2,18 @@ import React from "react"
 import { NavLink, Link } from "react-router-dom";
 import { RiHomeFill } from 'react-icons/ri';
 import { IoIosArrowForward } from 'react-icons/io';
+import { categories } from '../../utils/data';
 
 import logo from '../../assets/logo.png'
 
- const categories = [
-  {name: 'animals'},
-  {name: 'persons'},
-  {name: 'objects'},
-  {name: 'ambients'},
-  {name: 'city'},
-  {name: 'others'},
-]
+ // const categories = [
+  // {name: 'animals'},
+  // {name: 'persons'},
+  // {name: 'objects'},
+  // {name: 'ambients'},
+  // {name: 'city'},
+  // {name: 'others'},
+// ]
 
 const Sidebar = ({ user, closeToggle }) => {
   const handleCloseSidebar = () => {
@@ -42,6 +43,7 @@ const Sidebar = ({ user, closeToggle }) => {
           </NavLink>
           <h3 className="mt-2 px-5 text-base 2xl:text-xl">Discover Categories</h3>
           {categories.slice(0, categories.length -1).map((category) =>(
+
           <NavLink
             to={`/category/${category.name}`}
             className={({isActive})=> isActive ? isActiveStyle : isNotActiveStyle }
