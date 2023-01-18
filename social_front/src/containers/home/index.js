@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { HiMenu } from 'react-icons/hi';
-import userQuery from '../../utils/data'
+import { userQuery } from '../../utils/data'
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { Routes, Route, Link } from 'react-router-dom';
 

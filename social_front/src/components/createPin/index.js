@@ -19,6 +19,7 @@ const CreatePin = ({ user }) => {
   const [ category, setCategory ] = useState(null);
   const [ imageAsset, setImageAsset ] = useState(null);
   const [ wrongImageType, setWronImageType ] = useState(false);
+  const [ comments, setComments ] = useState('');
 
   const navigate = useNavigate();
 
@@ -53,6 +54,7 @@ const CreatePin = ({ user }) => {
         title,
         about,
         destination,
+        comments,
         image: {
           _type:'image',
           asset: {
@@ -150,6 +152,13 @@ const CreatePin = ({ user }) => {
             value={destination}
             onChange={(e) => { setDestination(e.target.value) }}
             placeholder="add your destination Url"
+          />
+         <input 
+            className="flex outline-none text-2xl sm:text-3xl font-bold border-b-2 border-gray-200 p-2" 
+            type="text" 
+            value={comments}
+            onChange={(e) => { setComments(e.target.value) }}
+            placeholder="add your Comments"
           />
        
 
