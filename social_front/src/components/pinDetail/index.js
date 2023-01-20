@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react"
-import { MdDownloadForOffline, MdUploadFile } from 'react-icons/md';
+import { MdDownloadForOffline  } from 'react-icons/md';
 import { Link, useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -66,7 +66,7 @@ const addComment = () => {
   useEffect(() => {
     fetchPinDetails();
 
-  },[pinId])
+},[pinId])
 
       if( !pinDetails ) return <Spinner message="Loading Pins Details"/>
   
