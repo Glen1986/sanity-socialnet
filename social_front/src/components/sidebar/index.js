@@ -49,7 +49,12 @@ const Sidebar = ({ user, closeToggle }) => {
             className={({isActive})=> isActive ? isActiveStyle : isNotActiveStyle }
             onClick={handleCloseSidebar}
             key={category.name}
-            >{category.name}</NavLink>
+            >
+            <img src={category.image} alt="category-pic" 
+              className="w-8 h-8 rounded-full"
+            />
+            {category.name}
+            </NavLink>
           ))}
         </div>
       </div>

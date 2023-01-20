@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
 import { client, urlFor } from '../../client';
-// import MasonryLayout from '../../components';
+import { MasonryLayout } from '../../components';
 import { pinDetailMorePinQuery, pinDetailQuery } from '../../utils/data'
 import { Spinner } from "../../components";
 
@@ -15,6 +15,11 @@ const PinDetail = ({user}) => {
   const [ addingComment, setAddingComment ] = useState(false);
 
   const { pinId } = useParams();
+
+
+
+
+
 
 const addComment = () => {
     if (comment) {
@@ -66,7 +71,9 @@ const addComment = () => {
       if( !pinDetails ) return <Spinner message="Loading Pins Details"/>
   
   return(
-    <div className="flex xl-flex-row flex-col m-auto bg-white" style={{maxWidth: '1500px', borderRadius: '32px' }}>
+
+    <>
+         <div className="flex xl-flex-row flex-col m-auto bg-white" style={{maxWidth: '1500px', borderRadius: '32px' }}>
       <div className="flex justify-center items-center md:items-start flex-initial ">
         <img src={pinDetails?.image && urlFor(pinDetails.image).url()} alt="user-post"
           className="rounded-md"
@@ -94,7 +101,7 @@ const addComment = () => {
         </div>
         <div>
         <Link to={`user-profile/${pinDetails.postedBy?._id}`} className="flex gap-2 items-center m-auto p-1">
-         <img className="w-8 h-8 rounded-full object-cover" src={pinDetails.postedBy?.image} alt="user-img" target="blanc" />
+         <img className="w-10 h-10 rounded-full object-cover" src={pinDetails.postedBy?.image} alt="user-img" target="blanc" />
           <p className="font.semibold capitalize">{pinDetails.postedBy?.userName}</p>
       </Link>
           <h2 className="mt-5 text-2xl">Comments</h2>
@@ -104,9 +111,11 @@ const addComment = () => {
               <img src={comment.postedBy.image} alt="comments"
                 className="w-10"
               />
-              <div className="flex fex-col ">
-                <p className="font-bold ">{comment.postedBy.userName}</p>
-                <p>{comment.comment}</p>
+              <div className="flex flex-col ml-2">
+                <p className="font-bold  mr-2">{comment.postedBy.userName}</p>
+                <div className="bg-secondaryColor rounded-md">
+                <p className="p-2">{comment.comment}</p>
+                </div>
               </div>
               </div>
             ))}
@@ -119,7 +128,7 @@ const addComment = () => {
               className="flex-1 border-grey-100 outline-none border-2 p-2 rounded-2xl focus:border-gray-300"
               placeholder="Add a Comment"
               onChange={(e) => setComment(e.target.value)}
-            type="text" 
+              type="text" 
             />
             <button
               type="button"
@@ -128,11 +137,19 @@ const addComment = () => {
             >
               {addingComment ? 'Posting the Comment' : 'Post'}
             </button>
-
           </div>
         </div>
       </div>
     </div>
+      {pins?.length > 0 ? (
+        <>
+          <h2 className="text-center font-bold text-2x mb-4">More Like This </h2>
+          <MasonryLayout pins={pins}/> 
+        </>
+      ):(
+        <Spinner message="loading more Pins..."/>
+      )}
+    </> 
     )
 }
 export default PinDetail
