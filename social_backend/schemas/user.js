@@ -14,6 +14,11 @@ export default {
       name: 'image',
       title: 'Image',
       type: 'string'
+    },
+    {
+      name: 'acces',
+      title: 'Access',
+      type: 'boolean'
     }
   ]
 }

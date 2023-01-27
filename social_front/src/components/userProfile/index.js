@@ -23,7 +23,7 @@ const UserProfile = () => {
   const navigate = useNavigate();
   const { userId } = useParams();
 
-   const User = localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : localStorage.clear();
+   // const User = localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : localStorage.clear();
 
   const activeBtnStyles = 'bg-red-500 text-white font-bold p-2 rounded-full w-20 outline-none';
   const notActiveBtnStyles = 'bg-primary text-black font-bold p-2 rounded-full w-20 border-2';
@@ -55,7 +55,8 @@ const UserProfile = () => {
 
    const logout = () => {
     localStorage.clear();
-    navigate('/');
+    navigate('/login');
+   window.reload();
   }
 
   if(!user) {
