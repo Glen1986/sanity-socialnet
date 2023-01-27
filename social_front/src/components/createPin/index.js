@@ -106,7 +106,7 @@ const CreatePin = ({ user }) => {
               </div>
             </label>
             ):(
-              <div class="relative h-full ">
+              <div className="relative h-full ">
                 <img src={imageAsset?.url} alt="uploaded-pic" className="w-full h-full"/>
                 <button
                   type="button"
@@ -122,7 +122,7 @@ const CreatePin = ({ user }) => {
         </div>
         <div className="flex flex-1 flex-col gap-6 lg:pd-5 mt-5 w-full">
            {user && (
-          <div class="flex gap-2 my-2 items-center bg-white rounded-lg">
+          <div className="flex gap-2 my-2 items-center bg-white rounded-lg">
             <img 
               src={user.image}
               className="W-10 H-10 rounded-full"
@@ -178,7 +178,7 @@ const CreatePin = ({ user }) => {
             ))}
           </select>
           </div>
-    <div class="flex justify-end items-end mt-5">
+    <div className="flex justify-end items-end mt-5">
       <button
         type="button"
         onClick={savePin}

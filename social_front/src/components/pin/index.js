@@ -60,7 +60,7 @@ const Pin = ({pin: {postedBy, image,  _id,  destination, save}}) => {
       >
        <img className="rounded-lg w-full" alt="user-post" src={urlFor(image).width(250).url()}/>
         {  (
-        <div class="absolute top-0 w-full h-full flex flex-col justify-between p-1 pr-2 pt-2 pb-2 z-50"
+        <div className="absolute top-0 w-full h-full flex flex-col justify-between p-1 pr-2 pt-2 pb-2 z-50"
           style={{ height: '100%'}}
         >
           <div className="flex items-center justify-between ">
