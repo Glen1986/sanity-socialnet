@@ -9,3 +9,4 @@ export { default as PinDetail } from '../components/pinDetail/index';
 export { default as Spinner } from '../components/spinner';
 export { default as Pin } from '../components/pin';
 export { default as MasonryLayout } from '../components/masonryLayout'
+export { default as Galeria } from '../components/galeria'

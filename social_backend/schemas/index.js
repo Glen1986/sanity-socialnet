@@ -3,5 +3,7 @@ import comment from './comment';
 import pin from './pin';
 import save from './save';
 import postedBy from './postedBy';
+import banner from './banner';
+import product from './product';
 
-export const schemaTypes = [user, comment, pin, save, postedBy]
+export const schemaTypes = [user, comment, pin, save, postedBy, banner, product]

@@ -19,7 +19,7 @@ const Pin = ({pin: {postedBy, image,  _id,  destination, save}}) => {
   // const alredySaved = !!(save?.save?.filter((item) => item.postedBy._id === user.googleId))?.length
   const alredySaved = !!(save?.filter((item) => item?.postedBy?._id === user?.googleId))?.length;
 
-  console.log( postedBy, destination, postHovered, savingPost )
+  // console.log( postedBy, destination, postHovered, savingPost )
   const savePin = (id) => {
     // if(!alredySaved){
       setSavingPost(true)
