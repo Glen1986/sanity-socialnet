@@ -2,33 +2,43 @@
 import React, {useState, useEffect} from 'react';
 import { HeroBanner, Cart, FooterBanner,  Layout, NavbarCom } from '../../components';
 import { client } from '../../client'
+import { Spinner } from '../../components';
 
 
-// function Header({ title }) {
-  // return <h1>{title ? title : 'Default title'}</h1>;
-// }
-// console.log(client.datasets);
 const Ecomerce = () => {
+  const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState({});
+  const [bannerData, setBannerData] = useState("");
 
   useEffect(() => {
-
+    setLoading(true)
     const query = '*[_type == "product"]'
     const netProducts = client.fetch(query)
       .then((data) =>{
         setProducts(data)
       })
-    console.log(products);
+    setLoading(false)
   },[]);
+
+  useEffect(() => {
+    setLoading(true)
+    const bannerQuery = '*[_type == "banner"]'
+    const netBanner = client.fetch(bannerQuery)
+      .then((data) =>{
+        setBannerData(data)
+      })    
+    setLoading(false)
+  },[]);
+
   return(
     <>
-      <HeroBanner />
+      <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
       <div className='products-heading'>
         <h2>Produtos</h2>
         <p>Variedades</p>
       </div>
       {
-        products ? products.map((product)=> <p>{product.name}</p> ): null
+        loading ? products.map((product)=> <p key={product.name}>{product.name}</p> ): <Spinner message="Loading Products"/>
       }
       <div className='products-container'>
       </div>
@@ -37,15 +47,5 @@ const Ecomerce = () => {
   )
 
 }
-// export const getServerSideProps = async () => {
-  // const query = '*[_type == "product"]'
-  // const products = await client.fetch(query)
-//
-  // const bannerQuery = '*[_type === "banner"]'
-  // const bannerData = await client.fetch(bannerQuery)
-  // console.log(products, bannerData);
-  // return{
-    // props:{products, bannerData}
-  // }
-// }
+
 export default Ecomerce;
