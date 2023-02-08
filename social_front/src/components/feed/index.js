@@ -32,8 +32,12 @@ const Feed = () => {
     }
   },[categoryId])
 
-  if (loading) return <Spinner message="we`r loading new Ideas..." />
-  if(!pins) return <h3 className="text-center">No Pins Available....</h3>
+  if (loading) return <Spinner message=
+    "we`r loading new Ideas..." 
+    />
+  if(!pins) return <h3 className="text-center">
+    No Pins Available....
+    </h3>
   return(
     <div>
       {pins && <MasonryLayout pins={pins}/>}

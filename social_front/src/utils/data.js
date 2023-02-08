@@ -109,7 +109,23 @@ export const pinDetailQuery = (pinId) => {
   }`;
   return query;
 };
-
+export const cartasMoreQuery = (n) => {
+  const query = `*[_type == "carta" && number == ${n} ]{
+    number,
+    nome,
+    audio{
+    asset->{
+    url
+    }
+    }, 
+    image{
+      asset->{
+        url
+      },
+    },
+  }`;
+  return query;
+};
 export const pinDetailMorePinQuery = (pin) => {
   const query = `*[_type == "pin" && category == '${pin.category}' && _id != '${pin._id}' ]{
     image{
@@ -137,7 +153,7 @@ export const pinDetailMorePinQuery = (pin) => {
 };
 
 export const searchQuery = (searchTerm) => {
-  const query = `*[_type == "pin" && title match '${searchTerm}*' || category match '${searchTerm}*' || about match '${searchTerm}*']{
+  const query = `*[_type == "pin"  && title match '${searchTerm}*' || category match '${searchTerm}*' || about match '${searchTerm}*']{
         image{
           asset->{
             url
@@ -158,6 +174,11 @@ export const searchQuery = (searchTerm) => {
                 image
               },
             },
+            carta{
+            title,
+            image,
+            audio
+            }
           }`;
   return query;
 };
@@ -166,6 +187,11 @@ export const userQuery = (userId) => {
   const query = `*[_type == "user" && _id == '${userId}']`;
   return query;
 };
+export const cartasQuery = (title) => {
+  const query = `*[_type == "carta" && title == '${title}']{  title  }
+}`;
+  return query;
+}
 
 export const userCreatedPinsQuery = (userId) => {
   const query = `*[ _type == 'pin' && userId == '${userId}'] | order(_createdAt desc){

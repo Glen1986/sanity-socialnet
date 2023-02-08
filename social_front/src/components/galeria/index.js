@@ -1,20 +1,80 @@
-import React from "react";
-import PhotoAlbum from "react-photo-album";
-
+import React, { useState, useEffect } from "react";
+import { cartasMoreQuery, userQuery, searchQuery } from "../../utils/data";
+import { client } from "../../client";
+import Pin from '../pin';
+import Carta from "../../containers/carta";
+import Spinner from "../spinner";
+import Audio from "../audio";
+import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 // import "yet-another-react-lightbox/styles.css";
 // import { Pin } from '../../components'
 
-const photos = [
-  {src:'../../assets/cartas/10.jpg', width: 800, height: 600 }
-]
-
 
 const Galeria = ({user}) => {
-  console.log(user);
+  const [loading, setLoading] = useState(false);
+  const [cartas, setCartas] = useState('');
+  const [nCarta, setNCarta] = useState(0);
+  const [audio, setAudio] = useState('');
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    setLoading(true)
+    const query = cartasMoreQuery(nCarta)
+
+    client.fetch(query)
+      .then((data) => {
+        setCartas(data)
+        const myAudio = data[0].audio.asset.url
+        setAudio(myAudio)
+        // setAudio(data[0].audio.asset.url)
+        // console.log(audio.url)
+        // imagem = cartas.image
+        setLoading(false)
+      })
+      .catch(e =>{
+        setError(e)
+        console.log(error)
+      })
+    
+  },[nCarta]);
+
+
+  // console.log(carta);
   return(
-    <div>
+    <div className="flex flex-col item-center justify-center p-5">
       <h1>Galeria</h1>
-      <PhotoAlbum  photos={photos}/>
+      {
+        cartas ? cartas.map((carta) => <Carta className="p-12 p-12" pin={carta} key={carta} audio={carta.audio} />) : <Spinner message='Loading'/>
+      }
+      
+      <div className="flex flex-col items-center justify-center">
+       <div>
+         <Audio audio={audio}/>
+      
+       </div>
+       <div className="flex felx-row items-center justify-center">
+         <button type="button"
+          onClick={() => {
+          setNCarta(nCarta - 1)
+          }}
+        ><FiArrowLeft
+          className="bg-red m-3"
+          />
+        </button>
+        <div>
+          {nCarta}
+        </div>
+        <button
+           onClick={() => {
+           setNCarta(nCarta + 1)
+          }}
+        >< FiArrowRight 
+          className="bg-red m-3"
+        /> </button>
+       </div>
+
+      </div>
+      
     </div>
     )
 }

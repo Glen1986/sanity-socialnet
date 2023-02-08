@@ -5,8 +5,13 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'title',
-      title: 'Title',
+      name: 'number',
+      title: 'Number',
+      type: 'number'
+    },
+    {
+      name: 'nome',
+      title: 'Nome',
       type: 'string'
     },
     {
@@ -21,14 +26,10 @@ export default {
       name: 'audio',
       title: 'Audio',
       type: 'file',
-      of:[{ type: 'document' }]
-    }
-    ,
-    {
-      name: 'comments',
-      title: 'Comments',
-      type: 'array',
-      of:[{ type: 'comment' }]
-    }
-  ]
+      options: {
+        accept:'audio/*'
+      },
+      of:[{ type: 'image' }]
+    },
+  ],
 }

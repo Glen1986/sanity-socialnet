@@ -16,6 +16,7 @@ import logo from '../../assets/logo.png'
 // ]
 
 const Sidebar = ({ user, closeToggle }) => {
+
   const handleCloseSidebar = () => {
     if(closeToggle) closeToggle(false)
   }
@@ -40,6 +41,9 @@ const Sidebar = ({ user, closeToggle }) => {
             onClick={handleCloseSidebar}
           >
             <RiHomeFill /> Home
+            <div>
+              <Link to='/galeria'>Galeria</Link>
+            </div>
           </NavLink>
           <h3 className="mt-2 px-5 text-base 2xl:text-xl">Discover Categories</h3>
           {categories.slice(0, categories.length -1).map((category) =>(

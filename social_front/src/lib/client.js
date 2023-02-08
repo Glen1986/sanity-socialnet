@@ -1,6 +1,9 @@
 
 import SanityClient from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url'
+import {basename} from 'path'
+import {createReadStream} from 'fs'
+
 
 export const client = SanityClient({
   projectId: process.env.REACT_APP_SANITY_PROJECT_ID,
