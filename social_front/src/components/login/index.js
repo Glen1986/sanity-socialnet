@@ -10,16 +10,17 @@ import { client } from "../../client"
 import { useNavigate } from "react-router-dom"
 
 const Login = () => {
+
   const navigate = useNavigate()
   const clientId = process.env.REACT_APP_GOOGLE_API_TOKEN;
     useEffect(()=>{
       gapi.load("client:auth2", ()=> {
         gapi.auth2.init({clientId:clientId})
     })
-  },[]);
+  },[clientId]);
 
   const responseGoogle = (response) => {
-    console.log(response)
+    // console.log(response)
     localStorage.setItem('user',JSON.stringify(response.profileObj ))
 //
     const { name, googleId, imageUrl } = response.profileObj;
@@ -37,7 +38,6 @@ const Login = () => {
   })
 }
 
-
   return(
     <div className="flex justify-start items-center flex-col h-screen">
       <div className="reltive w-full h-full">
@@ -52,7 +52,7 @@ const Login = () => {
         />
         <div className="absolute flex flex-col justify-center items-center top-0 right-0 left-0 bottom-0 bg-blackOverlay">
           <div className="p-5">
-            <img src={logo} alt="logo" width="140px" />
+            <image src={logo} alt="logo" width="140px" />
           </div>
             <div className="shadow-2xl">
               <GoogleLogin 

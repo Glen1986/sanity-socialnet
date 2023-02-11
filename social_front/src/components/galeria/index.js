@@ -6,6 +6,7 @@ import Carta from "../../containers/carta";
 import Spinner from "../spinner";
 import Audio from "../audio";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 // import "yet-another-react-lightbox/styles.css";
 // import { Pin } from '../../components'
 
@@ -16,7 +17,9 @@ const Galeria = ({user}) => {
   const [nCarta, setNCarta] = useState(0);
   const [audio, setAudio] = useState('');
   const [error, setError] = useState("");
-
+  const access = user.access
+  const navigate = useNavigate()
+console.log(access);
   useEffect(() => {
     setLoading(true)
     const query = cartasMoreQuery(nCarta)
@@ -33,12 +36,14 @@ const Galeria = ({user}) => {
       })
       .catch(e =>{
         setError(e)
-        console.log(error)
+        // console.log(error)
       })
     
-  },[nCarta]);
+},[nCarta, error]);
 
-
+  useEffect(() => {
+   if(access == false) return navigate('/shop' )
+  },[]);
   // console.log(carta);
   return(
     <div className="flex flex-col item-center justify-center p-5">

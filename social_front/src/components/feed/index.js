@@ -1,15 +1,16 @@
 import React, {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
-import { feedQuery, searchQuery } from "../../utils/data";
+import { feedQuery, searchQuery  } from "../../utils/data";
 
 import { client } from "../../client";
 import { Spinner, MasonryLayout } from "../../components";
 
 
 const Feed = () => {
-  const [loading, setLoading] = useState(false)
-  const [pins, setPins] = useState(null)
-  const { categoryId } = useParams()
+  const [loading, setLoading] = useState(false);
+  const [pins, setPins] = useState(null);
+  const { categoryId } = useParams();
+
 
   useEffect(()=>{
     setLoading(true)
@@ -31,6 +32,8 @@ const Feed = () => {
 
     }
   },[categoryId])
+
+  
 
   if (loading) return <Spinner message=
     "we`r loading new Ideas..." 
