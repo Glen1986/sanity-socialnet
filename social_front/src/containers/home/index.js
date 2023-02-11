@@ -19,6 +19,7 @@ const Home = () => {
   const userInfo = fetchUser();
   const scrollRef = useRef(null);
 
+console.log(user);
   useEffect(()=>{
     const query = userQuery(userInfo?.googleId)
 
@@ -30,7 +31,6 @@ const Home = () => {
   useEffect(()=>{
     scrollRef.current.scrollTo(0, 0)
   },[])
-
   // console.log(userInfo)
   //overflow-y-auto z-10
   //w-full flex
@@ -43,10 +43,10 @@ const Home = () => {
         <div className="p-2 w-full flex flex-row justify-between items-center shadow-md">
         <HiMenu fontSize={40} className="cursor-pointer" onClick={()=> setToggleSidebar(true)}/>
         <Link>
-          <img src={logo} alt="logo" width={160} className="w-28"/>
+          <image src={logo} alt="logo" width={160} className="w-28"/>
         </Link>
         <Link to={`user-profile/${user?._id}`}>
-          <img src={user?.image} alt="logo" width={80} className="w-28"/>
+          <image src={user?.image} alt="logo" width={80} className="w-28"/>
         </Link>
         </div>
         {toggleSidebar && (
@@ -62,7 +62,7 @@ const Home = () => {
         <Routes>
           <Route path= "/user-profile/:userId" element={<UserProfile />} />
           <Route path= "/*" element={<Pins user={user && user} />} />          
-          <Route path= "/galeria" element={<Galeria user={user && user}  />} />                    
+          <Route path= "/galeria" element={<Galeria user={user && user}/>} />                    
           <Route path= "/ecomerce" element={<Ecomerce />} />
         </Routes>
       </div>

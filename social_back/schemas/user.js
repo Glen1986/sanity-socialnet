@@ -3,6 +3,7 @@ export default {
   name: 'user',
 	title: 'User',
   type: 'document',
+  
   fields: [
     {
       name: 'userName',
@@ -16,9 +17,10 @@ export default {
       type: 'string'
     },
     {
-      name: 'acces',
+      name: 'access',
       title: 'Access',
-      type: 'boolean'
+      type: 'boolean',
+      initialValue: false,
     }
   ]
 }

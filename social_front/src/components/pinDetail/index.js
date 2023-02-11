@@ -66,7 +66,7 @@ const addComment = () => {
   useEffect(() => {
     fetchPinDetails();
 
-},[pinId])
+})
 
       if( !pinDetails ) return <Spinner message="Loading Pins Details"/>
   
@@ -76,6 +76,7 @@ const addComment = () => {
          <div className="flex xl-flex-row flex-col m-auto bg-white" style={{maxWidth: '1500px', borderRadius: '32px' }}>
       <div className="flex justify-center items-center md:items-start flex-initial ">
         <img src={pinDetails?.image && urlFor(pinDetails.image).url()} alt="user-post"
+          // eslint-disable-next-line
           className="rounded-md"
         />
       </div>
