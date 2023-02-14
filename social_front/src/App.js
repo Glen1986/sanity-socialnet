@@ -4,7 +4,6 @@ import './style/global.css';
 
 import Login from "./components/login";
 import Home from "./containers/home";
-// import Ecomerce from './containers/ecomerce';
 import { fetchUser } from '../src/utils/fetchUser';
 
 
@@ -15,8 +14,7 @@ const App = () => {
     const user = fetchUser();
 
     if (!user) return navigate('/login');
-  }, []);
-//     <Route path='/ecomerce' element={<Ecomerce/>}/>
+  }, [navigate]);
 
   return (
    <Routes>

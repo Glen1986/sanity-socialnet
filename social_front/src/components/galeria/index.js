@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { cartasMoreQuery, userQuery, searchQuery } from "../../utils/data";
 import { client } from "../../client";
-import Pin from '../pin';
 import Carta from "../../containers/carta";
-import Spinner from "../spinner";
-import Audio from "../audio";
+import {  Audio, Spinner, Pagination } from '../../components';
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-// import "yet-another-react-lightbox/styles.css";
-// import { Pin } from '../../components'
 
 
 const Galeria = ({user}) => {
@@ -29,57 +25,40 @@ console.log(access);
         setCartas(data)
         const myAudio = data[0].audio.asset.url
         setAudio(myAudio)
-        // setAudio(data[0].audio.asset.url)
-        // console.log(audio.url)
-        // imagem = cartas.image
         setLoading(false)
       })
       .catch(e =>{
         setError(e)
-        // console.log(error)
       })
     
 },[nCarta, error]);
 
   useEffect(() => {
-   if(access == false) return navigate('/shop' )
-  },[]);
-  // console.log(carta);
+   if(access == false) return navigate('/shop', { replace:true } )
+    
+  },[access, navigate]);
   return(
-    <div className="flex flex-col item-center justify-center p-5">
-      <h1>Galeria</h1>
+    <div className=" flex flex-col item-center justify-center p-5">
+      <div className="flex items-center ">
+        <h1 className="flex mx-auto mb-6">Galeria</h1>
+      </div>
+      <div className="max-w-40% border-solid border-2 border-white rounded-xl pb-6 mx-auto flex flex-col">
       {
         cartas ? cartas.map((carta) => <Carta className="p-12 p-12" pin={carta} key={carta} audio={carta.audio} />) : <Spinner message='Loading'/>
       }
       
       <div className="flex flex-col items-center justify-center">
-       <div>
+      
+
+      </div>
+      </div>
+       <div className="flex flex-col mx-auto mt-8">
          <Audio audio={audio}/>
       
        </div>
-       <div className="flex felx-row items-center justify-center">
-         <button type="button"
-          onClick={() => {
-          setNCarta(nCarta - 1)
-          }}
-        ><FiArrowLeft
-          className="bg-red m-3"
-          />
-        </button>
-        <div>
-          {nCarta}
-        </div>
-        <button
-           onClick={() => {
-           setNCarta(nCarta + 1)
-          }}
-        >< FiArrowRight 
-          className="bg-red m-3"
-        /> </button>
-       </div>
-
+      <div>
+        <Pagination nCarta={nCarta} setNCarta={setNCarta} />
       </div>
-      
     </div>
     )
 }

@@ -7,7 +7,7 @@ const Pins = ({user, pin}) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   return(
-    <div className="px-2 md:px-5">
+    <div className="">
       <div className="bg-gray-50">
         <Navbar searchterm={searchTerm} setSearchTerm={setSearchTerm} user={user && user}/>
       </div>

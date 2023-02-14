@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@babel/core": "^7.20.12",
+    "@heroicons/react": "^2.0.15",
     "@react-icons/all-files": "^4.1.0",
     "@sanity/client": "^4.0.1",
     "@sanity/image-url": "^1.0.1",
@@ -16,6 +17,7 @@
     "babel-eslint": "8",
     "babel-preset-next": "^1.4.0",
     "gapi-script": "^1.2.0",
+    "heroicons": "^2.0.15",
     "next": "^13.1.5",
     "next-sanity-image": "^3.2.1",
     "nextjs": "^0.0.3",

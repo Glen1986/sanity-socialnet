@@ -24,7 +24,7 @@ body, * {
   width: 0px;
 }
 .header{
-  background-color: var(--headerColor)
+  background-color: var(--headerColor);
 }
 .body{
   background-color: var(--backColor)
