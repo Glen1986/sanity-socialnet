@@ -1,3 +1,16 @@
+ :root{
+    --titleColor: rgb(255, 255, 255);
+    --textColor: rgb(255, 255, 255);
+    --backColor: rgb(39, 182, 204);
+    --headerColor: rgb(214, 23, 173);
+    --footerColor: rgb(49, 52, 98);
+    --extrasColor: rgb(64, 69, 128);
+    --titleMobileSize: 28px;
+    --titleDesktopSize: 38px;
+}
+
+
+
 html,
 body, * {
   padding: 0;
@@ -10,7 +23,16 @@ body, * {
 ::-webkit-scrollbar {
   width: 0px;
 }
-
+.header{
+  background-color: var(--headerColor)
+}
+.body{
+  background-color: var(--backColor)
+}
+.usuario{
+  background-color: transparent;
+  border-radius:1rem;
+}
 a {
   color: inherit;
   text-decoration: none;

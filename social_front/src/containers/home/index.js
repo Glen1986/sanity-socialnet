@@ -39,7 +39,7 @@ console.log(user);
       <div className="hidden md:flex h-screen flex-initial">
         <Sidebar user={user && user} />
       </div>
-      <div className="flex md:hidden flex-row">
+      <div className="header flex md:hidden flex-row">
         <div className="p-2 w-full flex flex-row justify-between items-center shadow-md">
         <HiMenu fontSize={40} className="cursor-pointer" onClick={()=> setToggleSidebar(true)}/>
         <Link>
@@ -58,7 +58,7 @@ console.log(user);
       </div>
       )}
       </div>
-      <div className="pb-2 flex-1 h-screen overflow-y-scroll" ref={scrollRef}>
+      <div className="body pb-2 flex-1 h-screen overflow-y-scroll" ref={scrollRef}>
         <Routes>
           <Route path= "/user-profile/:userId" element={<UserProfile />} />
           <Route path= "/*" element={<Pins user={user && user} />} />          
