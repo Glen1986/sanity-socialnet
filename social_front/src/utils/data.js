@@ -187,6 +187,10 @@ export const userQuery = (userId) => {
   const query = `*[_type == "user" && _id == '${userId}']`;
   return query;
 };
+export const userGaleryQuery = (props) => {
+  const query = `*[_type == "user" && _id == '${props.userId} && access =='${props.access}']`;
+  return query;
+};
 export const cartasQuery = (title) => {
   const query = `*[_type == "carta" && title == '${title}']{  title  }
 }`;
