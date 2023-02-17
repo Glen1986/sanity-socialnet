@@ -1,4 +1,4 @@
-export { default as CreatePin } from '../components/createPin/index';
+export { default as CreatePin } from '../components/createPin';
 export { default as Feed } from '../components/feed/index';
 export { default as Login } from '../components/login/index';
 export { default as Navbar } from '../components/navBar/index';
@@ -18,3 +18,6 @@ export { default as Layout } from '../components/ecomerce/layout'
 export { default as NavbarCom } from '../components/ecomerce/navBarCom'
 export { default as Pager } from '../components/pager'
 export { default as Audio } from '../components/audio'
+export { default as Pagination } from '../components/pagination'
+export { default as Carta } from '../components/cartas'
+export { default as Shop } from '../components/shop'

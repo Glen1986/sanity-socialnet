@@ -4,10 +4,9 @@ import { userQuery } from '../../utils/data'
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { Routes, Route, Link } from 'react-router-dom';
 
-import {  Sidebar, UserProfile }  from '../../components'
+import {  Sidebar, UserProfile, Shop, Galeria }  from '../../components'
 import Pins from "../pins";
 import Ecomerce from '../../components/ecomerce';
-import Galeria from '../../components/galeria';
 import { client } from '../../client'
 import logo from '../../assets/logo.png'
 import { fetchUser } from "../../utils/fetchUser";
@@ -19,7 +18,7 @@ const Home = () => {
   const userInfo = fetchUser();
   const scrollRef = useRef(null);
 
-console.log(user);
+// console.log(user);
   useEffect(()=>{
     const query = userQuery(userInfo?.googleId)
 
@@ -64,6 +63,7 @@ console.log(user);
           <Route path= "/*" element={<Pins user={user && user} />} />          
           <Route path= "/galeria" element={<Galeria user={user && user}/>} />                    
           <Route path= "/ecomerce" element={<Ecomerce />} />
+          <Route path= "/shop" element={<Shop user={user && user} />} />          
         </Routes>
       </div>
     </div>
