@@ -43,6 +43,9 @@ const Feed = () => {
     </h3>
   return(
     <div>
+     <h2 className="text-center text-4xl font-semibold mt-10 text-gray-900">
+       Nossos Pins
+     </h2>
       {pins && <MasonryLayout pins={pins}/>}
     </div>
     )
