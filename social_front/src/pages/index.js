@@ -17,7 +17,6 @@ const App = () => {
 
     if (!user) return navigate('/login');
   }, []);
-//     <Route path='/ecomerce' element={<Ecomerce/>}/>
 
   return (
    <Routes>

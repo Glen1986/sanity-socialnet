@@ -3,6 +3,7 @@ import React, {useState} from "react"
 import { Link, useNavigate } from "react-router-dom"
 // eslint-disable-next-line
 import { IoMdAdd, IoMdSearch } from "react-icons/io"
+import { AiOutlineShoppingCart } from 'react-icons/ai'
 
 const NavBar = ({ searchterm, setSearchTerm, user }) => {
   const navigate = useNavigate();
@@ -28,9 +29,13 @@ const NavBar = ({ searchterm, setSearchTerm, user }) => {
         >
           <img src={user.image} alt="user" className="rounded-md"/>
         </Link>
-        <Link to="/create-pin" className="bg-black text-white rounded-lg  w-12 h-12 md:w-14 md:h-12 flex justify-center items-center">
+       <div className="flex flex-col">
+          <Link to="/create-pin" className="bg-black text-white rounded-lg  w-8 h-8 md:w-14 md:h-12 flex justify-center items-center">
           <IoMdAdd />
+        </Link><Link to="/shop" className="bg-black text-white rounded-lg  w-8 h-8 md:w-14 md:h-12 flex justify-center items-center">
+          <AiOutlineShoppingCart />
         </Link>
+       </div>
       </div>
           </div>
     )
