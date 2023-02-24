@@ -27,7 +27,7 @@ const NavBar = ({ searchterm, setSearchTerm, user }) => {
           to={`user-profile/${user?._id}`} 
           className="border-md "
         >
-          <img src={user.image} alt="user" className="rounded-md"/>
+          <img src={user.image} alt="user" className="min-[320px]:hidden min-[768px]:flex rounded-md"/>
         </Link>
        <div className="flex flex-col">
           <Link to="/create-pin" className="bg-black text-white rounded-lg  w-8 h-8 md:w-14 md:h-12 flex justify-center items-center">
