@@ -13,12 +13,12 @@ const Login = () => {
 
   const navigate = useNavigate()
   const clientId = process.env.REACT_APP_GOOGLE_API_TOKEN;
-    useEffect(()=>{
+   /** useEffect(()=>{
       gapi.load("client:auth2", ()=> {
         gapi.auth2.init({clientId:clientId})
     })
   },[clientId]);
-
+**/
   const responseGoogle = (response) => {
     // console.log(response)
     localStorage.setItem('user',JSON.stringify(response.profileObj ))
