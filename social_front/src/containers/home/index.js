@@ -31,7 +31,7 @@ const Home = () => {
     scrollRef.current.scrollTo(0, 0)
   },[])
   console.log(user);
-  // console.log(userInfo)
+  console.log(userInfo)
   //overflow-y-auto z-10
   //w-full flex
   return(
