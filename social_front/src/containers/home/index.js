@@ -17,7 +17,7 @@ const Home = () => {
   const userInfo = fetchUser();
   const scrollRef = useRef(null);
 
- console.log(user);
+
   useEffect(()=>{
     const query = userQuery(userInfo?.googleId)
 
@@ -25,6 +25,7 @@ const Home = () => {
       .then((data)=>{
         setUser(data[0])
       })
+     console.log(user);
   },[userInfo?.googleId])
   useEffect(()=>{
     scrollRef.current.scrollTo(0, 0)
