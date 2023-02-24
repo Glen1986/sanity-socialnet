@@ -4,9 +4,8 @@ import { userQuery } from '../../utils/data'
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { Routes, Route, Link } from 'react-router-dom';
 
-import {  Sidebar, UserProfile, Shop, Galeria }  from '../../components'
+import {  Sidebar, UserProfile  }  from '../../components'
 import Pins from "../pins";
-import Ecomerce from '../../components/ecomerce';
 import { client } from '../../client'
 import logo from '../../assets/logo.png'
 import { fetchUser } from "../../utils/fetchUser";
@@ -42,10 +41,10 @@ const Home = () => {
         <div className="p-2 w-full flex flex-row justify-between items-center shadow-md">
         <HiMenu fontSize={40} className="cursor-pointer" onClick={()=> setToggleSidebar(true)}/>
         <Link>
-          <image src={logo} alt="logo" width={160} className="w-28"/>
+          <img src={logo} alt="logo" width={160} className="w-28"/>
         </Link>
         <Link to={`user-profile/${user?._id}`}>
-          <image src={user?.image} alt="logo" width={80} className="w-28"/>
+          <img src={user?.image} alt="logo" width={80} className="w-28"/>
         </Link>
         </div>
         {toggleSidebar && (
@@ -61,9 +60,6 @@ const Home = () => {
         <Routes>
           <Route path= "/user-profile/:userId" element={<UserProfile />} />
           <Route path= "/*" element={<Pins user={user && user} />} />          
-          <Route path= "/galeria" element={<Galeria user={user && user}/>} />                    
-          <Route path= "/ecomerce" element={<Ecomerce />} />
-          <Route path= "/shop" element={<Shop user={user && user} />} />          
         </Routes>
       </div>
     </div>
