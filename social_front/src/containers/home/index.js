@@ -25,11 +25,12 @@ const Home = () => {
       .then((data)=>{
         setUser(data[0])
       })
-     console.log(user);
+     
   },[userInfo?.googleId])
   useEffect(()=>{
     scrollRef.current.scrollTo(0, 0)
   },[])
+  console.log(user);
   // console.log(userInfo)
   //overflow-y-auto z-10
   //w-full flex
