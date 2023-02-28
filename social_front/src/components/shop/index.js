@@ -29,6 +29,7 @@ function Shop({user}) {
   const [linkBuyMercadoPago, setLinkBuyMercadoPago] = useState(false);
   const [statusPayment, setStatusPayment] = useState(false);
 
+  const myName = user.givenName +' '+ user.familyName;
   const handdleChange = (e) => {
     setFormData({
       name: e.target.name,
@@ -72,6 +73,7 @@ function Shop({user}) {
       alert(err)
     })
   }
+  console.log(user, myName);
   // console.log(responsePayment)
   return (
     <div className="flex flex-col w-[100%] text-center">
@@ -97,7 +99,7 @@ function Shop({user}) {
             <h1>compra aprovada</h1>
         }
         <form className='flex flex-col' onSubmit={handleSubmit}>
-          <input type="text" onChange={handdleChange} className='text-black text-center m-1 pl-1 rounded-lg' value={user?.userName} />
+          <input type="text" onChange={handdleChange} className='text-black text-center m-1 pl-1 rounded-lg' value={myName} />
           <input onChange={handdleChange} className='text-black m-1 pl-1 rounded-lg' type="text" name="mail" placeholder='mail' />
           <input onChange={handdleChange}  className='text-black m-1 pl-1 rounded-lg' type="text" name="cpf" placeholder="cpf" />
           <input className='bg-[#DDD] m-1 text-black rounded-xl ' type="submit" value={"Pago"}  / >
