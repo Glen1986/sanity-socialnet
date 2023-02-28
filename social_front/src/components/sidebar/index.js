@@ -6,15 +6,6 @@ import { categories } from '../../utils/data';
 
 import logo from '../../assets/logo.png'
 
- // const categories = [
-  // {name: 'animals'},
-  // {name: 'persons'},
-  // {name: 'objects'},
-  // {name: 'ambients'},
-  // {name: 'city'},
-  // {name: 'others'},
-// ]
-
 const Sidebar = ({ user, closeToggle }) => {
 
   const handleCloseSidebar = () => {

@@ -62,8 +62,8 @@ const UserProfile = () => {
   if(!user) {
     return <Spinner message="Loading Profile......"/>
   }
-console.log(userId, user.googleId, user._id)
-console.log(userId === user._id)
+// console.log(userId, user.googleId, user._id)
+// console.log(userId === user._id)
   return(
     <div className="relative pb-2 h.full justify.center ">
       <div className="flex flex-col pb-5 ">
