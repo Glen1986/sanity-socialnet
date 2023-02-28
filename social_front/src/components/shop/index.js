@@ -11,10 +11,6 @@ api.interceptors.request.use(async config => {
   config.headers.Authorization = `Bearer ${token}`
   return config
 })
-// const mercadopago = require('mercadopago')
-// mercadopago.configure({
-  // access_token: process.env.TOKEN_PUBLIC_API_MERCADO_PAGO
-// })
 const formReducer = (state, event) => {
   return {
     ...state,
@@ -22,8 +18,6 @@ const formReducer = (state, event) => {
   }
 }
 function Shop({user}) {
-  // const userName = localStorage.getItem('user')
-  // console.log(userName);
   const [formData, setFormData] = useReducer(formReducer, {});
   const [responsePayment, setResponsePayment] = useState(false);
   const [linkBuyMercadoPago, setLinkBuyMercadoPago] = useState(false);
@@ -42,6 +36,7 @@ function Shop({user}) {
       .get(`v1/payments/${responsePayment.data.id}`)
       .then(response => {
         if(response.data.status === 'approved'){
+          setStatusPayment(true)
         }
       })
   }
@@ -88,11 +83,11 @@ function Shop({user}) {
         }
         {
           responsePayment &&
-        <button className='bg-[#ddd] p-1 text-black' onClick={getStatusPayment}>verificar pagamento</button>
+        <button className='bg-[#ddd] p-1 text-blacka rounded-l rounded-r m-4' onClick={getStatusPayment}>verificar pagamento</button>
         }
         {
           linkBuyMercadoPago && !statusPayment &&
-        <iframe src={linkBuyMercadoPago} className="w-[480px] h-[820px] mx-auto" title= 'link_buy' />
+        <iframe src={linkBuyMercadoPago} className="w-[480px] h-[820px] mx-auto mb-10 rounded-xl" title= 'link_buy' />
         }
         {
         statusPayment && 
