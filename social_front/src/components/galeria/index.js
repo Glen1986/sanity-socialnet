@@ -48,7 +48,10 @@ const Galeria = ({user}) => {
           }
           
           <div className="flex flex-col items-center justify-center">
-          
+            {
+              !user  &&
+              navigate('/login')
+            }
 
           </div>
           </div>
