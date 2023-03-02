@@ -5,7 +5,6 @@ import { AiOutlineShoppingCart } from 'react-icons/ai'
 
 const NavBar = ({ searchterm, setSearchTerm, user }) => {
   const navigate = useNavigate();
-  console.log(user);
 
   if(!user) return null
   return(

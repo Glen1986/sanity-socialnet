@@ -17,7 +17,7 @@ const formReducer = (state, event) => {
     [event.name]: event.value
   }
 }
-function Shop({user}) {
+const Shop = ({user}) => {
   const [formData, setFormData] = useReducer(formReducer, {});
   const [responsePayment, setResponsePayment] = useState(false);
   const [linkBuyMercadoPago, setLinkBuyMercadoPago] = useState(false);
@@ -31,6 +31,7 @@ function Shop({user}) {
     })
   }
 
+
   const getStatusPayment = () => {
     api
       .get(`v1/payments/${responsePayment.data.id}`)
@@ -42,33 +43,43 @@ function Shop({user}) {
   }
 
   const handleSubmit = (e) => {
-    console.log(formData);
         e.preventDefault()
+    
     const body = {
-      "transaction_amount": 2,
+     
+      "transaction_amount": 120,
       "description":"product",
       "payment_method_id":"pix",
       "payer":{
-        "email":"escobarglen@gmail.com",
-        "first_name":"",
-        "last_name":'',
+        "email":formData.mail,
+        "first_name":myName.split(' ')[0],
+        "last_name":myName.split(' ')[1],
         "identification":{
           "type": "cpf",
-          "number": "123456",
+          "number": formData.cpf,
         }
+     
       },
-      "notification_url":"https://eoy40un9l6uno1s.m.pipedream.net"
+      // "notification_url":"https://eoy40un9l6uno1s.m.pipedream.net"
     }
     
-    api.post('v1/payments', body).then(response => {
+    api.post('v1/payments', body)
+      .then(response => {
       setResponsePayment(response)
       setLinkBuyMercadoPago(response.data.point_of_interaction.transaction_data.ticket_url)
+            // back_urls: {
+      // success:'https://omundodadarthi.com.br/galeria/',
+        // pending:'https://omundodadarthi.com.br/panding',
+        // failure:'https:;//omundodadarthi.com.br/404'
+    // },
 
     }).catch(err => {
       alert(err)
     })
   }
-  console.log(user, myName);
+      // console.log(formData);
+  console.log(responsePayment);
+  // console.log(user, myName);
   // console.log(responsePayment)
   return (
     <div className="flex flex-col w-[100%] text-center">
