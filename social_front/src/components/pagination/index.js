@@ -6,18 +6,18 @@ export default function Pagination({nCarta, setNCarta}) {
         <a
           href="#"
            onClick={() => {
-          setNCarta(nCarta - 1)
+          setNCarta(Number(nCarta) - 1)
           }}
 
           className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
         >
           Previo
         </a>
-        <div className="text-2xl antialiased text-inherit">{nCarta}</div>
+        <div className="text-2xl antialiased text-inherit"> <input className="w-12" type="text" name={nCarta} onChange={(e) => setNCarta(e.target.value ).clear} value={nCarta}></input> </div>
         <a
           href="#"
            onClick={() => {
-          setNCarta(nCarta + 1)
+          setNCarta(Number(nCarta) + 1)
           }}          
           className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
         >
