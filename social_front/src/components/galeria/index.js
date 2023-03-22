@@ -37,13 +37,14 @@ const Galeria = ({user}) => {
             const myAudio = data[0].audio.asset.url
             setAudio(myAudio)
             setLoading(false)
+            console.log(myAudio);
           })
           .catch(e =>{
             setError(e)
           })
         
     },[nCarta, error]);
-console.log(sanityUser);
+// console.log(sanityUser);
       useEffect(() => {
        if(access == false) return navigate('/shop', { replace:true } )
 

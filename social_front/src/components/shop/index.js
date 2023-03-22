@@ -6,28 +6,32 @@ import cartas from './../../assets/images/cartas.jpeg';
 const api = axios.create({
   baseURL:'https://api.mercadopago.com'
 })
+
 api.interceptors.request.use(async config => {
   const token = process.env.REACT_APP_TOKEN_PUBLIC_API_MERCADO_PAGO_PUBLIC
   config.headers.Authorization = `Bearer ${token}`
   return config
 })
+
 const formReducer = (state, event) => {
   return {
     ...state,
     [event.name]: event.value
   }
 }
+
 const Shop = ({user}) => {
-  const [formData, setFormData] = useReducer(formReducer, {});
+  const [formData /*state*/, setFormData /*action*/] = useReducer(formReducer, {});
   const [responsePayment, setResponsePayment] = useState(false);
   const [linkBuyMercadoPago, setLinkBuyMercadoPago] = useState(false);
   const [statusPayment, setStatusPayment] = useState(false);
 
   const myName = user.givenName +' '+ user.familyName;
+
   const handdleChange = (e) => {
     setFormData({
       name: e.target.name,
-      value: e.target.value
+      value: e.target.value,
     })
   }
 
@@ -44,12 +48,10 @@ const Shop = ({user}) => {
 
   const handleSubmit = (e) => {
         e.preventDefault()
-    
-    const body = {
-     
+     const body = {
       "transaction_amount": 120,
       "description":"product",
-      "payment_method_id":"pix",
+      "payment_method_id":formData.method,
       "payer":{
         "email":formData.mail,
         "first_name":myName.split(' ')[0],
@@ -62,12 +64,12 @@ const Shop = ({user}) => {
       },
       // "notification_url":"https://eoy40un9l6uno1s.m.pipedream.net"
     }
-    
+      
     api.post('v1/payments', body)
       .then(response => {
       setResponsePayment(response)
       setLinkBuyMercadoPago(response.data.point_of_interaction.transaction_data.ticket_url)
-            // back_urls: {
+      // back_urls: {
       // success:'https://omundodadarthi.com.br/galeria/',
         // pending:'https://omundodadarthi.com.br/panding',
         // failure:'https:;//omundodadarthi.com.br/404'
@@ -76,10 +78,11 @@ const Shop = ({user}) => {
     }).catch(err => {
       alert(err)
     })
+    
   }
       // console.log(formData);
-  console.log(responsePayment);
-  // console.log(user, myName);
+  // console.log(responsePayment);
+  // console.log(method);
   // console.log(responsePayment)
   return (
     <div className="flex flex-col w-[100%] text-center">
@@ -104,10 +107,18 @@ const Shop = ({user}) => {
         statusPayment && 
             <h1>compra aprovada</h1>
         }
+        
+        
         <form className='flex flex-col' onSubmit={handleSubmit}>
           <input type="text" onChange={handdleChange} className='text-black text-center m-1 pl-1 rounded-lg' value={myName} />
           <input onChange={handdleChange} className='text-black m-1 pl-1 rounded-lg' type="text" name="mail" placeholder='mail' />
           <input onChange={handdleChange}  className='text-black m-1 pl-1 rounded-lg' type="text" name="cpf" placeholder="cpf" />
+          <select className='text-black m-1 pl-1 rounded-lg' onChange={handdleChange} id="method" name="method">
+            <option className='text-black m-1 pl-1 rounded-lg' name='' value=''>Opcao</option>
+            <option className='text-black m-1 pl-1 rounded-lg' name='method' value='pix'>Pix</option>
+            <option className='text-black m-1 pl-1 rounded-lg' name='method' value='credito'>Credito</option>
+          </select>
+
           <input className='bg-[#DDD] m-1 text-black rounded-xl ' type="submit" value={"Pago"}  / >
         </form>
       </header>

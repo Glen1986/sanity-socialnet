@@ -1,8 +1,8 @@
 
-import React, {useState} from "react"
+import React from "react"
 
 
-import {  urlFor} from "../../client"
+import { urlFor } from "../../client"
 
 const Carta = ({pin: { image, audio }}) => {
   
