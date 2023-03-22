@@ -32,7 +32,11 @@ const NavBar = ({ searchterm, setSearchTerm, user }) => {
        <div className="flex flex-col">
           <Link to="/create-pin" className="bg-black text-white rounded-lg  w-8 h-8 md:w-14 md:h-12 flex justify-center items-center">
           <IoMdAdd />
-        </Link><Link to="/shop" className="bg-black text-white rounded-lg  w-8 h-8 md:w-14 md:h-12 flex justify-center items-center">
+        </Link>
+         <Link to="/store" className="bg-black text-white rounded-lg  w-8 h-8 md:w-14 md:h-12 flex justify-center items-center">
+          <AiOutlineShoppingCart />
+        </Link>
+        <Link to="/shop" className="bg-black text-white rounded-lg  w-8 h-8 md:w-14 md:h-12 flex justify-center items-center">
           <AiOutlineShoppingCart />
         </Link>
        </div>

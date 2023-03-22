@@ -26,9 +26,11 @@ export default {
       name: 'audio',
       title: 'Audio',
       type: 'file',
-      options: {
+      options: [
+      {
         accept:'audio/*'
       },
+      ],
       of:[{ type: 'image' }]
     },
   ],
