@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import GoogleLogin from "react-google-login"
+import { GoogleLogin } from 'react-google-login';
 import { gapi } from "gapi-script"
 import { FcGoogle } from "react-icons/fc"
 
@@ -20,7 +20,7 @@ const Login = () => {
   },[clientId]);
 
   const responseGoogle = (response) => {
-    // console.log(response)
+    console.log(response)
     localStorage.setItem('user',JSON.stringify(response.profileObj ))
 //
     const { name, googleId, imageUrl, access } = response.profileObj;

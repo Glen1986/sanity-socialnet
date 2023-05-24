@@ -1,7 +1,8 @@
 
-import React, { useReducer, useState } from 'react';
+import React, { useReducer, useState, useEffect } from 'react';
 import axios from 'axios';
 import cartas from './../../assets/images/cartas.jpeg';
+import {client} from '../../client'
 
 const api = axios.create({
   baseURL:'https://api.mercadopago.com'
@@ -25,8 +26,21 @@ const Shop = ({user}) => {
   const [responsePayment, setResponsePayment] = useState(false);
   const [linkBuyMercadoPago, setLinkBuyMercadoPago] = useState(false);
   const [statusPayment, setStatusPayment] = useState(false);
+  const [users, setUsers] = useState()
 
   const myName = user.givenName +' '+ user.familyName;
+
+  useEffect(() => {
+    const getUser = async () => {
+      const myUser = await client.fetch("*[_type == 'user']")
+      const MyUser = myUser.find((users) => 
+        users.userName == myName 
+        )
+      // console.log(MyUser);
+      setUsers(MyUser)
+    }
+getUser()
+  },[])
 
   const handdleChange = (e) => {
     setFormData({
@@ -35,6 +49,7 @@ const Shop = ({user}) => {
     })
   }
 
+  // console.log(user.email);
 
   const getStatusPayment = () => {
     api
@@ -45,7 +60,7 @@ const Shop = ({user}) => {
         }
       })
   }
-
+console.log(users);
   const handleSubmit = (e) => {
         e.preventDefault()
      const body = {
@@ -57,7 +72,7 @@ const Shop = ({user}) => {
         "first_name":myName.split(' ')[0],
         "last_name":myName.split(' ')[1],
         "identification":{
-          "type": "cpf",
+          "type": formData.cpf,
           "number": formData.cpf,
         }
      
@@ -74,7 +89,7 @@ const Shop = ({user}) => {
         // pending:'https://omundodadarthi.com.br/panding',
         // failure:'https:;//omundodadarthi.com.br/404'
     // },
-
+// console.log(body);
     }).catch(err => {
       alert(err)
     })
@@ -99,6 +114,7 @@ const Shop = ({user}) => {
           responsePayment &&
         <button className='bg-[#ddd] p-1 text-blacka rounded-l rounded-r m-4' onClick={getStatusPayment}>verificar pagamento</button>
         }
+        
         {
           linkBuyMercadoPago && !statusPayment &&
         <iframe src={linkBuyMercadoPago} className="w-[480px] h-[820px] mx-auto mb-10 rounded-xl" title= 'link_buy' />
@@ -110,16 +126,15 @@ const Shop = ({user}) => {
         
         
         <form className='flex flex-col' onSubmit={handleSubmit}>
-          <input type="text" onChange={handdleChange} className='text-black text-center m-1 pl-1 rounded-lg' value={myName} />
-          <input onChange={handdleChange} className='text-black m-1 pl-1 rounded-lg' type="text" name="mail" placeholder='mail' />
+          <input className='text-black text-center m-1 pl-1 rounded-lg' type="text" name="nome" /*value={myName}*/ onChange={handdleChange} />
+          <input className='text-black m-1 pl-1 text-center rounded-lg' type="text" name="mail" /*value={user.email}*/ onChange={handdleChange} />
           <input onChange={handdleChange}  className='text-black m-1 pl-1 rounded-lg' type="text" name="cpf" placeholder="cpf" />
           <select className='text-black m-1 pl-1 rounded-lg' onChange={handdleChange} id="method" name="method">
             <option className='text-black m-1 pl-1 rounded-lg' name='' value=''>Opcao</option>
             <option className='text-black m-1 pl-1 rounded-lg' name='method' value='pix'>Pix</option>
             <option className='text-black m-1 pl-1 rounded-lg' name='method' value='credito'>Credito</option>
           </select>
-
-          <input className='bg-[#DDD] m-1 text-black rounded-xl ' type="submit" value={"Pago"}  / >
+          <input className='bg-[#DDD] m-1 text-black rounded-xl' type="submit" value={"Pago"}  / >
         </form>
       </header>
     </div>

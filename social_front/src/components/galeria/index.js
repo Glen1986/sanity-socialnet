@@ -37,7 +37,7 @@ const Galeria = ({user}) => {
             const myAudio = data[0].audio.asset.url
             setAudio(myAudio)
             setLoading(false)
-            console.log(myAudio);
+            // console.log(myAudio);
           })
           .catch(e =>{
             setError(e)
