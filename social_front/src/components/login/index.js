@@ -3,7 +3,7 @@ import { GoogleLogin } from 'react-google-login';
 import { gapi } from "gapi-script"
 import { FcGoogle } from "react-icons/fc"
 
-import shareVideo from "../../assets/share.mp4"
+import shareVideo from "../../assets/is.mp4"
 import logo from "../../assets/logowhite.png"
 
 import { client } from "../../client"
@@ -66,7 +66,7 @@ const Login = () => {
                     onClick={renderProps.onClick}
                     disabled={renderProps.disabled}
                   >
-                    <FcGoogle className="mr-4" />Sign in with Google
+                    <FcGoogle className="mr-4" />Seja Benvindo com Google
                   </button>
                 )}
                 onSuccess={responseGoogle}

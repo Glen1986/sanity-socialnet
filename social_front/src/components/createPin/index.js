@@ -2,6 +2,7 @@ import React, {useState} from "react"
 import { BsCloudArrowUp } from 'react-icons/bs'
 import { MdDelete } from "react-icons/md"
 import { useNavigate } from "react-router-dom"
+import Image from 'next/image';
 
 import { client } from "../../client"
 import Spinner from "../spinner"
@@ -107,7 +108,7 @@ const CreatePin = ({ user }) => {
             </label>
             ):(
               <div className="relative h-full ">
-                <img src={imageAsset?.url} alt="uploaded-pic" className="w-full h-full"/>
+                <Image src={imageAsset?.url} alt="uploaded-pic" className="w-full h-full"/>
                 <button
                   type="button"
                   className="absolute bottom-3 right-3 p-3 rounded-full bg-white text-xl cursor-pointer outline-none hover:shadow-md transition-all duration-500 ease-in-out"
@@ -123,7 +124,7 @@ const CreatePin = ({ user }) => {
         <div className="flex flex-1 flex-col gap-6 lg:pd-5 mt-5 w-full">
            {user && (
           <div className="flex gap-2 my-2 items-center bg-white rounded-lg">
-            <img 
+            <Image 
               src={user.image}
               className="W-10 H-10 rounded-full"
               alt="user-profile"
