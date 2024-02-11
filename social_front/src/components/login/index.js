@@ -3,7 +3,7 @@ import { GoogleLogin } from 'react-google-login';
 import { gapi } from "gapi-script"
 import { FcGoogle } from "react-icons/fc"
 
-import shareVideo from "../../assets/is.mp4"
+import shareVideo from "../../assets/720.mp4"
 import logo from "../../assets/logowhite.png"
 
 import { client } from "../../client"
